@@ -589,8 +589,18 @@ namespace DataPlant {
 
 	};
 
+	class PlantComponent {
+
+		public:
+
+			virtual void simulateComponent() = 0;
+
+	};
+
 	struct CompData
 	{
+		PlantComponent * plantComponent;
+		
 		// Members
 		std::string TypeOf; // The 'keyWord' identifying  component type
 		int TypeOf_Num; // Reference the "TypeOf" parameters in DataPlant

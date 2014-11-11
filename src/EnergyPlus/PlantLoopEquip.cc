@@ -159,7 +159,7 @@ namespace PlantLoopEquip {
 		using HeatPumpWaterToWaterCOOLING::SimHPWatertoWaterCOOLING;
 		using HeatPumpWaterToWaterSimple::SimHPWatertoWaterSimple;
 		using OutsideEnergySources::SimOutsideEnergy;
-		using Pipes::SimPipes;
+		//using Pipes::SimPipes;
 		using PipeHeatTransfer::SimPipesHeatTransfer;
 		using Pumps::SimPumps;
 
@@ -261,11 +261,11 @@ namespace PlantLoopEquip {
 			{ auto const SELECT_CASE_var1( EquipTypeNum );
 
 			if ( SELECT_CASE_var1 == TypeOf_Pipe ) {
-				SimPipes( TypeOf_Pipe, sim_component.Name, sim_component.CompNum, PlantLoop( LoopNum ).LoopSide( LoopSideNum ).Branch( BranchNum ).MaxVolFlowRate, InitLoopEquip, FirstHVACIteration );
-
+				sim_component.plantComponent->simulateComponent();
+				
 			} else if ( SELECT_CASE_var1 == TypeOf_PipeSteam ) {
-				SimPipes( TypeOf_PipeSteam, sim_component.Name, sim_component.CompNum, PlantLoop( LoopNum ).LoopSide( LoopSideNum ).Branch( BranchNum ).MaxVolFlowRate, InitLoopEquip, FirstHVACIteration );
-
+				sim_component.plantComponent->simulateComponent();
+				
 			} else if ( SELECT_CASE_var1 == TypeOf_PipeExterior ) {
 				SimPipesHeatTransfer( TypeOf_PipeExterior, sim_component.Name, sim_component.CompNum, InitLoopEquip, FirstHVACIteration );
 

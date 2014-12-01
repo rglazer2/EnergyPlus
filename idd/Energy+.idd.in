@@ -58760,6 +58760,29 @@ PlantComponent:TemperatureSource,
        \units C
        \note Used if Temperature Specification Type = Scheduled
 
+PlantComponent:Prototype,
+       \memo A prototype plant component being used as a demonstration for implementing
+       \memo  an object-oriented component in the plant
+       \memo Very similar to the TemperatureSource component
+  A1 , \field Name
+       \required-field
+       \type alpha
+       \note Component Name
+  A2 , \field Inlet Node
+       \required-field
+       \type node
+       \note Name of the source inlet node
+  A3 , \field Outlet Node
+       \required-field
+       \type node
+       \note Name of the source outlet node
+  N1 ; \field Design Volume Flow Rate
+       \required-field
+       \type real
+       \units m3/s
+       \minimum> 0.0
+       \note The design volumetric flow rate for this source
+       
 CentralHeatPumpSystem,
        \min-fields 14
        \memo This chiller bank can contain multiple chiller heaters and heat pump performance objects.

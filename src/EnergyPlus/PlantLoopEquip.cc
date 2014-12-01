@@ -37,6 +37,7 @@
 #include <PlantCentralGSHP.hh>
 #include <PlantChillers.hh>
 #include <PlantComponentTemperatureSources.hh>
+#include <PlantComponentPrototype.hh>
 #include <PlantHeatExchangerFluidToFluid.hh>
 #include <PlantLoadProfile.hh>
 #include <PlantPipingSystemsManager.hh>
@@ -194,6 +195,7 @@ namespace PlantLoopEquip {
 		using HVACVariableRefrigerantFlow::SimVRFCondenserPlant;
 		using PlantComponentTemperatureSources::SimWaterSource;
 		using PlantCentralGSHP::SimCentralGroundSourceHeatPump;
+		using PlantComponentPrototypeNamespace::simPrototype;
 
 		// Locals
 		// SUBROUTINE ARGUMENT DEFINITIONS:
@@ -1093,6 +1095,10 @@ namespace PlantLoopEquip {
 					sim_component.OptLoad = OptLoad;
 					sim_component.CompNum = EquipNum;
 				}
+
+			} else if ( EquipTypeNum == TypeOf_PrototypePlantComponent ) {
+
+				simPrototype( sim_component.Name, EquipNum, RunFlag, InitLoopEquip, CurLoad, FirstHVACIteration ); //DSU
 
 			} else {
 				//        CALL ShowSevereError('SimPlantEquip: Invalid Component Equipment Type='//TRIM(EquipType))

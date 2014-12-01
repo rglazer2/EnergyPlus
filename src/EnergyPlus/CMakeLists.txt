@@ -351,6 +351,8 @@ SET( SRC
   PlantCentralGSHP.hh
   PlantChillers.cc
   PlantChillers.hh
+  PlantComponentPrototype.cc
+  PlantComponentPrototype.hh
   PlantComponentTemperatureSources.cc
   PlantComponentTemperatureSources.hh
   PlantCondLoopOperation.cc
@@ -365,6 +367,7 @@ SET( SRC
   PlantLoopSolver.hh
   PlantManager.cc
   PlantManager.hh
+  PlantObjects.hh
   PlantPipingSystemsManager.cc
   PlantPipingSystemsManager.hh
   PlantPressureSystem.cc

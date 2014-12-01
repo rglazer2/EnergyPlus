@@ -1219,6 +1219,10 @@ namespace PlantManager {
 							this_comp.TypeOf_Num = TypeOf_PlantComponentUserDefined;
 							this_comp.GeneralEquipType = GenEquipTypes_PlantComponent;
 							this_comp.CurOpSchemeType = UnknownStatusOpSchemeType;
+						} else if ( SameString( this_comp_type, "PlantComponent:Prototype" ) ) {
+							this_comp.TypeOf_Num = TypeOf_PrototypePlantComponent;
+							this_comp.GeneralEquipType = GenEquipTypes_PlantComponent;
+							this_comp.CurOpSchemeType = UnknownStatusOpSchemeType;
 						} else if ( SameString( this_comp_type, "Coil:UserDefined" ) ) {
 							this_comp.TypeOf_Num = TypeOf_CoilUserDefined;
 							this_comp.GeneralEquipType = GenEquipTypes_PlantComponent;
@@ -3971,6 +3975,10 @@ namespace PlantManager {
 							this_component.FlowPriority = LoopFlowStatus_NeedyAndTurnsLoopOn;
 							this_component.HowLoadServed = HowMet_PassiveCap;
 						} else if ( SELECT_CASE_var == TypeOf_PlantComponentUserDefined ) {
+							this_component.FlowCtrl = ControlType_Active;
+							this_component.FlowPriority = LoopFlowStatus_Unknown;
+							this_component.HowLoadServed = HowMet_Unknown;
+						} else if ( SELECT_CASE_var == TypeOf_PrototypePlantComponent ) {
 							this_component.FlowCtrl = ControlType_Active;
 							this_component.FlowPriority = LoopFlowStatus_Unknown;
 							this_component.HowLoadServed = HowMet_Unknown;

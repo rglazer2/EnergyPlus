@@ -124,7 +124,7 @@ namespace OutsideEnergySources {
 		// na
 
 		// SUBROUTINE LOCAL VARIABLE DECLARATIONS:
-		static bool GetInputFlag( true ); // Get input once and once only
+		//static bool GetInputFlag( true ); // Get input once and once only
 		int EqNum;
 		Real64 InletTemp;
 		Real64 OutletTemp;
@@ -132,10 +132,10 @@ namespace OutsideEnergySources {
 		//FLOW
 
 		//GET INPUT
-		if ( GetInputFlag ) {
-			GetOutsideEnergySourcesInput();
-			GetInputFlag = false;
-		}
+		//if ( GetInputFlag ) {
+			//GetOutsideEnergySourcesInput();
+			//GetInputFlag = false;
+		//}
 
 		// Find the correct Equipment
 		if ( CompIndex == 0 ) {
@@ -233,6 +233,14 @@ namespace OutsideEnergySources {
 		static bool ErrorsFound( false ); // If errors detected in input
 		bool IsNotOK; // Flag to verify name
 		bool IsBlank; // Flag for blank name
+
+		static bool GetInputFlag( true ); // Get input once and once only
+
+		//GET INPUT
+		if ( !GetInputFlag ) {
+			return;
+		}
+		GetInputFlag = false;
 
 		//GET NUMBER OF ALL EQUIPMENT TYPES
 		cCurrentModuleObject = "DistrictHeating";

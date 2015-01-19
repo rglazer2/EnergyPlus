@@ -104,14 +104,14 @@ namespace PlantLoadProfile {
 		// SUBROUTINE LOCAL VARIABLE DECLARATIONS:
 		static std::string const RoutineName( "SimulatePlantProfile" );
 		Real64 DeltaTemp;
-		static bool GetInput( true );
+		//static bool GetInput( true );
 		Real64 Cp; // local fluid specific heat
 
 		// FLOW:
-		if ( GetInput ) {
-			GetPlantProfileInput();
-			GetInput = false;
-		}
+		//if ( GetInput ) {
+			//GetPlantProfileInput();
+			//GetInput = false;
+		//}
 
 		if ( InitLoopEquip ) {
 			ProfileNum = FindItemInList( EquipName, PlantProfile.Name(), NumOfPlantProfile );
@@ -188,6 +188,15 @@ namespace PlantLoadProfile {
 		//  CHARACTER(len=MaxNameLength)   :: FoundBranchName
 		//  INTEGER                        :: BranchControlType
 
+		static bool GetInput( true );
+
+		// FLOW:
+		if ( !GetInput ) {
+			return;
+		}
+		
+		GetInput = false;
+		
 		// FLOW:
 		cCurrentModuleObject = "LoadProfile:Plant";
 		NumOfPlantProfile = GetNumObjectsFound( cCurrentModuleObject );

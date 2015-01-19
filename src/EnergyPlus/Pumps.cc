@@ -160,14 +160,14 @@ namespace Pumps {
 		// SUBROUTINE ARGUMENT DEFINITIONS:
 
 		// SUBROUTINE LOCAL VARIABLE DECLARATIONS:
-		static bool GetInputFlag( true ); // Get input once and once only
+		//static bool GetInputFlag( true ); // Get input once and once only
 		int PumpNum; // Pump index within PumpEquip derived type
 
-		// Get input from IDF one time
-		if ( GetInputFlag ) {
-			GetPumpInput();
-			GetInputFlag = false;
-		}
+		//// Get input from IDF one time
+		//if ( GetInputFlag ) {
+			//GetPumpInput();
+			//GetInputFlag = false;
+		//}
 
 		// Exit early if no pumps found
 		if ( NumPumps == 0 ) {
@@ -308,7 +308,15 @@ namespace Pumps {
 		Real64 SteamDensity;
 		Real64 TempWaterDensity;
 		static int DummyWaterIndex( 1 );
-
+		static bool GetInputFlag( true ); // Get input once and once only
+		
+		// Get input from IDF one time
+		if ( !GetInputFlag ) {
+			return;
+		}
+		
+		GetInputFlag = false;
+		
 		ErrorsFound = false;
 
 		//GET NUMBER OF ALL EQUIPMENT TYPES

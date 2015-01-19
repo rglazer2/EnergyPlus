@@ -58,8 +58,7 @@ namespace Pipes {
 	// MODULE VARIABLE DECLARATIONS:
 
 	int NumLocalPipes( 0 );
-	bool GetPipeInputFlag( true );
-
+	
 	// SUBROUTINE SPECIFICATIONS FOR MODULE Pipe
 
 	// Object Data
@@ -125,10 +124,10 @@ namespace Pipes {
 		//FLOW
 
 		//GET INPUT
-		if ( GetPipeInputFlag ) {
-			GetPipeInput();
-			GetPipeInputFlag = false;
-		}
+		//if ( GetPipeInputFlag ) {
+			//GetPipeInput();
+			//GetPipeInputFlag = false;
+		//}
 
 		if ( CompIndex == 0 ) {
 			PipeNum = FindItemInList( PipeName, LocalPipe.Name(), NumLocalPipes );
@@ -162,14 +161,15 @@ namespace Pipes {
 			LocalPipe( PipeNum ).OneTimeInit = false;
 		}
 
-		if ( BeginEnvrnFlag && LocalPipe( PipeNum ).EnvrnFlag ) {
-			InitComponentNodes( 0.0, PlantLoop( LocalPipe( PipeNum ).LoopNum ).MaxMassFlowRate, LocalPipe( PipeNum ).InletNodeNum, LocalPipe( PipeNum ).OutletNodeNum, LocalPipe( PipeNum ).LoopNum, LocalPipe( PipeNum ).LoopSide, LocalPipe( PipeNum ).BranchIndex, LocalPipe( PipeNum ).CompIndex );
-			LocalPipe( PipeNum ).EnvrnFlag = false;
-		}
+		LocalPipe( PipeNum ).simulate();
+		//if ( BeginEnvrnFlag && LocalPipe( PipeNum ).EnvrnFlag ) {
+			//InitComponentNodes( 0.0, PlantLoop( LocalPipe( PipeNum ).LoopNum ).MaxMassFlowRate, LocalPipe( PipeNum ).InletNodeNum, LocalPipe( PipeNum ).OutletNodeNum, LocalPipe( PipeNum ).LoopNum, LocalPipe( PipeNum ).LoopSide, LocalPipe( PipeNum ).BranchIndex, LocalPipe( PipeNum ).CompIndex );
+			//LocalPipe( PipeNum ).EnvrnFlag = false;
+		//}
 
-		if ( ! BeginEnvrnFlag ) LocalPipe( PipeNum ).EnvrnFlag = true;
+		//if ( ! BeginEnvrnFlag ) LocalPipe( PipeNum ).EnvrnFlag = true;
 
-		SafeCopyPlantNode( LocalPipe( PipeNum ).InletNodeNum, LocalPipe( PipeNum ).OutletNodeNum, LocalPipe( PipeNum ).LoopNum );
+		//SafeCopyPlantNode( LocalPipe( PipeNum ).InletNodeNum, LocalPipe( PipeNum ).OutletNodeNum, LocalPipe( PipeNum ).LoopNum );
 		//  Node(LocalPipe(PipeNum)%OutletNodeNum)%FluidType            = Node(LocalPipe(PipeNum)%InletNodeNum)%FluidType
 		//  Node(LocalPipe(PipeNum)%OutletNodeNum)%Temp                 = Node(LocalPipe(PipeNum)%InletNodeNum)%Temp
 		//  Node(LocalPipe(PipeNum)%OutletNodeNum)%TempMin              = Node(LocalPipe(PipeNum)%InletNodeNum)%TempMin
@@ -193,6 +193,18 @@ namespace Pipes {
 
 	// End Plant Loop Module Driver Subroutines
 	//******************************************************************************
+
+	void LocalPipeData::simulate() {
+		if ( DataGlobals::BeginEnvrnFlag && this->EnvrnFlag ) {
+			PlantUtilities::InitComponentNodes( 0.0, DataPlant::PlantLoop( this->LoopNum ).MaxMassFlowRate, this->InletNodeNum, this->OutletNodeNum, this->LoopNum, this->LoopSide, this->BranchIndex, this->CompIndex );
+			this->EnvrnFlag = false;
+		}
+
+		if ( ! DataGlobals::BeginEnvrnFlag ) this->EnvrnFlag = true;
+
+		PlantUtilities::SafeCopyPlantNode( this->InletNodeNum, this->OutletNodeNum, this->LoopNum );
+		
+	}
 
 	// Beginning of Plant Loop Module Get Input subroutines
 	//******************************************************************************
@@ -249,7 +261,13 @@ namespace Pipes {
 		static bool ErrorsFound( false );
 		bool IsNotOK; // Flag to verify name
 		bool IsBlank; // Flag for blank name
+		static bool GetPipeInputFlag( true );
 
+		if ( !GetPipeInputFlag ) {
+			return;
+		}
+		GetPipeInputFlag = false;
+		
 		//GET NUMBER OF ALL EQUIPMENT TYPES
 		NumWaterPipes = GetNumObjectsFound( "Pipe:Adiabatic" );
 		NumSteamPipes = GetNumObjectsFound( "Pipe:Adiabatic:Steam" );
@@ -309,70 +327,67 @@ namespace Pipes {
 	// Beginning Initialization Section of the Plant Loop Module
 	//******************************************************************************
 
-	void
-	InitializePipes(
-		int const PipeType, // Type of Pipe
-		std::string const & PipeName, // Name of Pipe
-		int & PipeNum, // Index into pipe structure for name
-		Real64 const MaxVolFlowRate // unused at present time
-	)
-	{
+	//void
+	//InitializePipes(
+		//int const PipeType, // Type of Pipe
+		//std::string const & PipeName, // Name of Pipe
+		//int & PipeNum, // Index into pipe structure for name
+		//Real64 const MaxVolFlowRate // unused at present time
+	//)
+	//{
 
-		// SUBROUTINE INFORMATION:
-		//       AUTHOR         Linda Lawrie
-		//       DATE WRITTEN   October 2007
-		//       MODIFIED       na
-		//       RE-ENGINEERED  na
+		//// SUBROUTINE INFORMATION:
+		////       AUTHOR         Linda Lawrie
+		////       DATE WRITTEN   October 2007
+		////       MODIFIED       na
+		////       RE-ENGINEERED  na
 
-		// PURPOSE OF THIS SUBROUTINE:
-		// Provide an external call to initialize Pipes/index numbers.
+		//// PURPOSE OF THIS SUBROUTINE:
+		//// Provide an external call to initialize Pipes/index numbers.
 
-		// METHODOLOGY EMPLOYED:
-		// na
+		//// METHODOLOGY EMPLOYED:
+		//// na
 
-		// REFERENCES:
-		// na
+		//// REFERENCES:
+		//// na
 
-		// Using/Aliasing
-		using InputProcessor::FindItemInList;
-		using General::TrimSigDigits;
+		//// Using/Aliasing
+		//using InputProcessor::FindItemInList;
+		//using General::TrimSigDigits;
 
-		// Locals
-		// SUBROUTINE ARGUMENT DEFINITIONS:
+		//// Locals
+		//// SUBROUTINE ARGUMENT DEFINITIONS:
 
-		// SUBROUTINE PARAMETER DEFINITIONS:
-		// na
+		//// SUBROUTINE PARAMETER DEFINITIONS:
+		//// na
 
-		// INTERFACE BLOCK SPECIFICATIONS:
-		// na
+		//// INTERFACE BLOCK SPECIFICATIONS:
+		//// na
 
-		// DERIVED TYPE DEFINITIONS:
-		// na
+		//// DERIVED TYPE DEFINITIONS:
+		//// na
 
-		// SUBROUTINE LOCAL VARIABLE DECLARATIONS:
-		// na
+		//// SUBROUTINE LOCAL VARIABLE DECLARATIONS:
+		//// na
 
-		if ( GetPipeInputFlag ) {
-			GetPipeInput();
-			GetPipeInputFlag = false;
-		}
-
-		if ( PipeNum == 0 ) {
-			PipeNum = FindItemInList( PipeName, LocalPipe.Name(), NumLocalPipes );
-			if ( PipeNum == 0 ) {
-				ShowFatalError( "SimPipes: Pipe requested not found =" + PipeName ); // Catch any bad names before crashing
-			}
-		} else {
-			if ( PipeNum > NumLocalPipes || PipeNum < 1 ) {
-				ShowFatalError( "InitializePipe: Invalid PipeNum passed=" + TrimSigDigits( PipeNum ) + ", Number of Pipes=" + TrimSigDigits( NumLocalPipes ) + ", Pipe name=" + PipeName );
-			}
-			if ( LocalPipe( PipeNum ).CheckEquipName ) {
-				if ( PipeName != LocalPipe( PipeNum ).Name ) {
-					ShowFatalError( "InitializePipe: Invalid PipeNum passed=" + TrimSigDigits( PipeNum ) + ", Pipe name=" + PipeName + ", stored Pipe Name for that index=" + LocalPipe( PipeNum ).Name );
-				}
-				LocalPipe( PipeNum ).CheckEquipName = false;
-			}
-		}
+			//GetPipeInput();
+		
+		//if ( PipeNum == 0 ) {
+			//PipeNum = FindItemInList( PipeName, LocalPipe.Name(), NumLocalPipes );
+			//if ( PipeNum == 0 ) {
+				//ShowFatalError( "SimPipes: Pipe requested not found =" + PipeName ); // Catch any bad names before crashing
+			//}
+		//} else {
+			//if ( PipeNum > NumLocalPipes || PipeNum < 1 ) {
+				//ShowFatalError( "InitializePipe: Invalid PipeNum passed=" + TrimSigDigits( PipeNum ) + ", Number of Pipes=" + TrimSigDigits( NumLocalPipes ) + ", Pipe name=" + PipeName );
+			//}
+			//if ( LocalPipe( PipeNum ).CheckEquipName ) {
+				//if ( PipeName != LocalPipe( PipeNum ).Name ) {
+					//ShowFatalError( "InitializePipe: Invalid PipeNum passed=" + TrimSigDigits( PipeNum ) + ", Pipe name=" + PipeName + ", stored Pipe Name for that index=" + LocalPipe( PipeNum ).Name );
+				//}
+				//LocalPipe( PipeNum ).CheckEquipName = false;
+			//}
+		//}
 
 		//  Node(LocalPipe(PipeNum)%OutletNodeNum)%FluidType            = Node(LocalPipe(PipeNum)%InletNodeNum)%FluidType
 		//  Node(LocalPipe(PipeNum)%OutletNodeNum)%Temp                 = Node(LocalPipe(PipeNum)%InletNodeNum)%Temp
@@ -388,7 +403,7 @@ namespace Pipes {
 		//  Node(LocalPipe(PipeNum)%OutletNodeNum)%Enthalpy             = Node(LocalPipe(PipeNum)%InletNodeNum)%Enthalpy
 		//  Node(LocalPipe(PipeNum)%OutletNodeNum)%HumRat               = Node(LocalPipe(PipeNum)%InletNodeNum)%HumRat
 
-	}
+	//}
 
 	//     NOTICE
 

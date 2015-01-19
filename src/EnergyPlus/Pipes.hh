@@ -23,7 +23,7 @@ namespace Pipes {
 	// MODULE VARIABLE DECLARATIONS:
 
 	extern int NumLocalPipes;
-	extern bool GetPipeInputFlag;
+	//extern bool GetPipeInputFlag;
 
 	// SUBROUTINE SPECIFICATIONS FOR MODULE Pipe
 
@@ -84,6 +84,8 @@ namespace Pipes {
 			CheckEquipName( CheckEquipName ),
 			EnvrnFlag( EnvrnFlag )
 		{}
+
+		void simulate();
 
 	};
 

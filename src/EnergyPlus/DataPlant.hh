@@ -1,6 +1,8 @@
 #ifndef DataPlant_hh_INCLUDED
 #define DataPlant_hh_INCLUDED
 
+#include <memory>
+
 // ObjexxFCL Headers
 #include <ObjexxFCL/FArray1D.hh>
 #include <ObjexxFCL/Fmath.hh>
@@ -372,6 +374,10 @@ namespace DataPlant {
 
 	// Types
 
+	class SimulatablePlantComponent {
+		virtual void simulate() = 0;
+	};
+
 	struct SplitterData
 	{
 		// Members
@@ -598,6 +604,7 @@ namespace DataPlant {
 		int GeneralEquipType; // General Equipment Type (e.g. Chillers, Pumps, etc)
 		std::string Name; // Component name
 		int CompNum; // Component ID number
+		std::shared_ptr<SimulatablePlantComponent> plantComponent;
 		int FlowCtrl; // flow control for splitter/mixer (ACTIVE/PASSIVE/BYPASS)
 		int FlowPriority; // status for overall loop flow determination
 		bool ON; // TRUE = designated component or operation scheme available
@@ -663,81 +670,6 @@ namespace DataPlant {
 			IndexInLoopSidePumps( 0 ),
 			TempDesCondIn( 0.0 ),
 			TempDesEvapOut( 0.0 )
-		{}
-
-		// Member Constructor
-		CompData(
-			std::string const & TypeOf, // The 'keyWord' identifying  component type
-			int const TypeOf_Num, // Reference the "TypeOf" parameters in DataPlant
-			int const GeneralEquipType, // General Equipment Type (e.g. Chillers, Pumps, etc)
-			std::string const & Name, // Component name
-			int const CompNum, // Component ID number
-			int const FlowCtrl, // flow control for splitter/mixer (ACTIVE/PASSIVE/BYPASS)
-			int const FlowPriority, // status for overall loop flow determination
-			bool const ON, // TRUE = designated component or operation scheme available
-			bool const Available, // TRUE = designated component or operation scheme available
-			std::string const & NodeNameIn, // Component inlet node name
-			std::string const & NodeNameOut, // Component outlet node name
-			int const NodeNumIn, // Component inlet node number
-			int const NodeNumOut, // Component outlet node number
-			Real64 const MyLoad, // Distributed Load
-			Real64 const MaxLoad, // Maximum load
-			Real64 const MinLoad, // Minimum Load
-			Real64 const OptLoad, // Optimal Load
-			Real64 const SizFac, // Sizing Fraction
-			int const CurOpSchemeType, // updated pointer to
-			int const NumOpSchemes, // number of schemes held in the pointer array
-			int const CurCompLevelOpNum, // pointer to the OpScheme array defined next
-			FArray1< OpSchemePtrData > const & OpScheme, // Pointers to component on lists
-			Real64 const EquipDemand, // Component load request based on inlet temp and outlet SP
-			bool const EMSLoadOverrideOn, // EMS is calling to override load dispatched to component
-			Real64 const EMSLoadOverrideValue, // EMS value to use for load when overridden [W] always positive.
-			int const HowLoadServed, // nature of component in terms of how it can meet load
-			Real64 const MinOutletTemp, // Component exit lower limit temperature
-			Real64 const MaxOutletTemp, // Component exit upper limit temperature
-			bool const FreeCoolCntrlShutDown, // true if component was shut down because of free cooling
-			Real64 const FreeCoolCntrlMinCntrlTemp, // current control temp value for free cooling controls
-			int const FreeCoolCntrlMode, // type of sensor used for free cooling controls
-			int const FreeCoolCntrlNodeNum, // chiller condenser inlet node number for free cooling controls
-			int const IndexInLoopSidePumps, // If I'm a pump, this tells my index in PL(:)%LS(:)%Pumps
-			Real64 const TempDesCondIn,
-			Real64 const TempDesEvapOut
-		) :
-			TypeOf( TypeOf ),
-			TypeOf_Num( TypeOf_Num ),
-			GeneralEquipType( GeneralEquipType ),
-			Name( Name ),
-			CompNum( CompNum ),
-			FlowCtrl( FlowCtrl ),
-			FlowPriority( FlowPriority ),
-			ON( ON ),
-			Available( Available ),
-			NodeNameIn( NodeNameIn ),
-			NodeNameOut( NodeNameOut ),
-			NodeNumIn( NodeNumIn ),
-			NodeNumOut( NodeNumOut ),
-			MyLoad( MyLoad ),
-			MaxLoad( MaxLoad ),
-			MinLoad( MinLoad ),
-			OptLoad( OptLoad ),
-			SizFac( SizFac ),
-			CurOpSchemeType( CurOpSchemeType ),
-			NumOpSchemes( NumOpSchemes ),
-			CurCompLevelOpNum( CurCompLevelOpNum ),
-			OpScheme( OpScheme ),
-			EquipDemand( EquipDemand ),
-			EMSLoadOverrideOn( EMSLoadOverrideOn ),
-			EMSLoadOverrideValue( EMSLoadOverrideValue ),
-			HowLoadServed( HowLoadServed ),
-			MinOutletTemp( MinOutletTemp ),
-			MaxOutletTemp( MaxOutletTemp ),
-			FreeCoolCntrlShutDown( FreeCoolCntrlShutDown ),
-			FreeCoolCntrlMinCntrlTemp( FreeCoolCntrlMinCntrlTemp ),
-			FreeCoolCntrlMode( FreeCoolCntrlMode ),
-			FreeCoolCntrlNodeNum( FreeCoolCntrlNodeNum ),
-			IndexInLoopSidePumps( IndexInLoopSidePumps ),
-			TempDesCondIn( TempDesCondIn ),
-			TempDesEvapOut( TempDesEvapOut )
 		{}
 
 	};

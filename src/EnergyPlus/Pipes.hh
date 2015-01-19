@@ -7,6 +7,7 @@
 // EnergyPlus Headers
 #include <EnergyPlus.hh>
 #include <DataGlobals.hh>
+#include <DataPlant.hh>
 
 namespace EnergyPlus {
 
@@ -29,7 +30,7 @@ namespace Pipes {
 
 	// Types
 
-	struct LocalPipeData
+	struct LocalPipeData : public DataPlant::SimulatablePlantComponent
 	{
 		// Members
 		std::string Name; // main plant (cooling) loop ID

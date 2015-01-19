@@ -2,6 +2,7 @@
 #include <ObjexxFCL/FArray.functions.hh>
 
 // EnergyPlus Headers
+#include <DataPlant.hh>
 #include <Pipes.hh>
 #include <BranchNodeConnections.hh>
 #include <DataHVACGlobals.hh>
@@ -129,23 +130,26 @@ namespace Pipes {
 			//GetPipeInputFlag = false;
 		//}
 
-		if ( CompIndex == 0 ) {
+		auto & thisComp( DataPlant::PlantLoop( LocalPipe( PipeNum ).LoopNum ).LoopSide( LocalPipe( PipeNum ).LoopSide ).Branch( LocalPipe( PipeNum ).BranchIndex ).Comp( LocalPipe( PipeNum ).CompIndex ) );
+
+		if ( !thisComp.plantComponent ) {
 			PipeNum = FindItemInList( PipeName, LocalPipe.Name(), NumLocalPipes );
-			if ( PipeNum == 0 ) {
-				ShowFatalError( "SimPipes: Pipe requested not found =" + PipeName ); // Catch any bad names before crashing
-			}
-			CompIndex = PipeNum;
-		} else {
-			PipeNum = CompIndex;
-			if ( PipeNum > NumLocalPipes || PipeNum < 1 ) {
-				ShowFatalError( "SimPipes: Invalid CompIndex passed=" + TrimSigDigits( PipeNum ) + ", Number of Pipes=" + TrimSigDigits( NumLocalPipes ) + ", Pipe name=" + PipeName );
-			}
-			if ( LocalPipe( PipeNum ).CheckEquipName ) {
-				if ( PipeName != LocalPipe( PipeNum ).Name ) {
-					ShowFatalError( "SimPipes: Invalid CompIndex passed=" + TrimSigDigits( PipeNum ) + ", Pipe name=" + PipeName + ", stored Pipe Name for that index=" + LocalPipe( PipeNum ).Name );
-				}
-				LocalPipe( PipeNum ).CheckEquipName = false;
-			}
+			thisComp.plantComponent = std::shared_ptr<DataPlant::SimulatablePlantComponent>( &LocalPipe( PipeNum ) );
+			//if ( PipeNum == 0 ) {
+				//ShowFatalError( "SimPipes: Pipe requested not found =" + PipeName ); // Catch any bad names before crashing
+			//}
+			//CompIndex = PipeNum;
+		//} else {
+			//PipeNum = CompIndex;
+			//if ( PipeNum > NumLocalPipes || PipeNum < 1 ) {
+				//ShowFatalError( "SimPipes: Invalid CompIndex passed=" + TrimSigDigits( PipeNum ) + ", Number of Pipes=" + TrimSigDigits( NumLocalPipes ) + ", Pipe name=" + PipeName );
+			//}
+			//if ( LocalPipe( PipeNum ).CheckEquipName ) {
+				//if ( PipeName != LocalPipe( PipeNum ).Name ) {
+					//ShowFatalError( "SimPipes: Invalid CompIndex passed=" + TrimSigDigits( PipeNum ) + ", Pipe name=" + PipeName + ", stored Pipe Name for that index=" + LocalPipe( PipeNum ).Name );
+				//}
+				//LocalPipe( PipeNum ).CheckEquipName = false;
+			//}
 		}
 
 		if ( LocalPipe( PipeNum ).OneTimeInit ) {
@@ -161,6 +165,7 @@ namespace Pipes {
 			LocalPipe( PipeNum ).OneTimeInit = false;
 		}
 
+		
 		LocalPipe( PipeNum ).simulate();
 		//if ( BeginEnvrnFlag && LocalPipe( PipeNum ).EnvrnFlag ) {
 			//InitComponentNodes( 0.0, PlantLoop( LocalPipe( PipeNum ).LoopNum ).MaxMassFlowRate, LocalPipe( PipeNum ).InletNodeNum, LocalPipe( PipeNum ).OutletNodeNum, LocalPipe( PipeNum ).LoopNum, LocalPipe( PipeNum ).LoopSide, LocalPipe( PipeNum ).BranchIndex, LocalPipe( PipeNum ).CompIndex );
@@ -203,7 +208,6 @@ namespace Pipes {
 		if ( ! DataGlobals::BeginEnvrnFlag ) this->EnvrnFlag = true;
 
 		PlantUtilities::SafeCopyPlantNode( this->InletNodeNum, this->OutletNodeNum, this->LoopNum );
-		
 	}
 
 	// Beginning of Plant Loop Module Get Input subroutines

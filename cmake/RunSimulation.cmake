@@ -153,10 +153,19 @@ else()
   set(ECHO_CMD "echo")
 endif()
 
+if(BUILD_FORTRAN)
+# ok, so readvars is getting messed up here, we need it to run to get eplusout.csv...though we also need it to run to get eplusmtr.csv...
+# in any case, if we build fortran, just force it to run readvars by adding -r for now and we'll at least get the main csv
+execute_process(COMMAND ${ECHO_CMD}
+                COMMAND "${ENERGYPLUS_EXE}" -r -w "${EPW_PATH}" -d "${OUTPUT_DIR_PATH}" ${ENERGYPLUS_FLAGS_LIST} "${IDF_PATH}"
+                WORKING_DIRECTORY "${OUTPUT_DIR_PATH}"
+                RESULT_VARIABLE RESULT)
+else()
 execute_process(COMMAND ${ECHO_CMD}
                 COMMAND "${ENERGYPLUS_EXE}" -w "${EPW_PATH}" -d "${OUTPUT_DIR_PATH}" ${ENERGYPLUS_FLAGS_LIST} "${IDF_PATH}"
                 WORKING_DIRECTORY "${OUTPUT_DIR_PATH}"
                 RESULT_VARIABLE RESULT)
+endif()
 
 if( RESULT EQUAL 0 )
   message("Test Passed")

@@ -620,6 +620,7 @@ EOF
 DXF created from EnergyPlus
 999
 Program Version,EnergyPlus, &lt;version&gt;
+```
 
 eplusout.edd
 -----------
@@ -681,7 +682,7 @@ It is very important to be careful with the EDD file. The Verbose option should 
 eplusout.eio
 ------------
 
-This file contains some standard and some optional “reports”. It is intended to be a somewhat intelligent report of input conditions when they don’t fit well in other places or when they aren’t substantial enough for their own “file”. (e.g. **eplusout.bnd**)  Contents of the file are somewhat documented in various places in the [Input Output Reference document](file:///E:\Docs4PDFs\InputOutputReference.pdf) – as results of objects. This file or portions of it can be easily imported into spreadsheet programs and more analysis done there. Contents of this file include construction details, location information, “environment” information, number of “warmup” days required in each environment.
+This file contains some standard and some optional “reports”. It is intended to be a somewhat intelligent report of input conditions when they don’t fit well in other places or when they aren’t substantial enough for their own “file”. (e.g. **eplusout.bnd**)  Contents of the file are somewhat documented in various places in the Input Output Reference document – as results of objects. This file or portions of it can be easily imported into spreadsheet programs and more analysis done there. Contents of this file include construction details, location information, “environment” information, number of “warmup” days required in each environment.
 
 The form of the file is a data dictionary line followed by the data. In this case, the data dictionary line precedes the first “data” line though there may be several defining “dictionary lines”. Each dictionary line will show the field as &lt;field name&gt; followed by other fields that will be in the data lines. Data will be displayed similarly. Each field of dictionary or data will be separated from the next by a comma “,” – and produce a comma delimited file. However, the lines for data will not be contiguous – some follow a stream of consciousness of the EnergyPlus execution.
 
@@ -767,7 +768,7 @@ Environment:Site Atmospheric Variation,0.330,460.000,6.500000E-003
 
 Program Control:Threads/Parallel Sims, Yes,2, Not Set, Not Set, Not Set, 2, 60, N/A
 
-The simulation parameters output is the simplest form of reporting in the **eplusout.eio** file. Each of the “header” records (lines starting with an “!”) are followed immediately by the one and only data line. By and large, these data lines are all merely echoes of the entries in the IDF (or defaulted for blank fields). For most of these descriptions, you can look at the object fields (of same name) in the [Input Output Reference](file:///E:\Docs4PDFs\InputOutputReference.pdf) document.
+The simulation parameters output is the simplest form of reporting in the **eplusout.eio** file. Each of the “header” records (lines starting with an “!”) are followed immediately by the one and only data line. By and large, these data lines are all merely echoes of the entries in the IDF (or defaulted for blank fields). For most of these descriptions, you can look at the object fields (of same name) in the Input Output Reference document.
 
 ### Version
 
@@ -2742,7 +2743,7 @@ The report describes the actions for the following equation:
 
 The coefficients listed above are used in the following equation:
 
-<div>\[ T = C_2 T_{zone} + C_3 T_{oadb} + C_4 C_5 + C_6 T_{grnd} + C_7 W_{spd} T_{oadb}
+<div>$$ T = C_2 T_{zone} + C_3 T_{oadb} + C_4 C_5 + C_6 T_{grnd} + C_7 W_{spd} T_{oadb} $$</div>
 
 where:
 
@@ -2871,7 +2872,7 @@ This is the calculated number of CTFs (Conduction Transfer Functions). The condu
 
 #### Field: Time Step
 
-The "timestep" in the construction line is the timestep at which the CTFs are valid. Because CTFs for certain constructions might not be stable at the user specified timestep (might be too "heavy" from a thermal mass standpoint), this may be different from the zone timestep (specified in “TimeStep in Hour”). In all cases though, this will be greater than or equal to the zone timestep. If the timestep for the construction is greater than the zone timestep, E+ will use interpolated histories to solve for the surface heat balances for this surface (see discussion on interpolated histories in the [Engineering Reference](file:///E:\Docs4PDFs\EngineeringDoc.pdf) document).
+The "timestep" in the construction line is the timestep at which the CTFs are valid. Because CTFs for certain constructions might not be stable at the user specified timestep (might be too "heavy" from a thermal mass standpoint), this may be different from the zone timestep (specified in “TimeStep in Hour”). In all cases though, this will be greater than or equal to the zone timestep. If the timestep for the construction is greater than the zone timestep, E+ will use interpolated histories to solve for the surface heat balances for this surface (see discussion on interpolated histories in the Engineering Reference document).
 
 #### Field: Thermal Conductance
 
@@ -5034,7 +5035,7 @@ FromTable_HPACCOOLCAPFFF,  !- Name
   0.8000000000,  !- Minimum Curve Output
   1.5000000000;  !- Maximum Curve Output
 END CREATING NEW CURVE OBJECT
-``
+```
 
 A second output form is provided to echo the reading of tabular data. The tabular data is echoed for each multi-variable lookup table object (ref. Table:MultiVariableLookup). The data is echoed using an increasing order sort format regardless of the format specified by the user. In addition, the tabular data is echoed when the data is included in the table object, or when read from an external file. This output form is provided as a verification step when reading tabular data. The normalization point is not included in the raw data varification.
 
@@ -6090,16 +6091,38 @@ Table 4. Table of Metered Resource  Types
 </tr>
 <tr>
  <td>Electricity</td>
+</tr>
+<tr>
  <td>Gas</td>
+</tr>
+<tr>
  <td>Gasoline</td>
+</tr>
+<tr>
  <td>Diesel</td>
+</tr>
+<tr>
  <td>Coal</td>
- <td>FuelOil\#1</td>
- <td>FuelOil\#2</td>
+</tr>
+<tr>
+ <td>FuelOil#1</td>
+</tr>
+<tr>
+ <td>FuelOil#2</td>
+</tr>
+<tr>
  <td>Propane</td>
+</tr>
+<tr>
  <td>Water</td>
+</tr>
+<tr>
  <td>Steam</td>
+</tr>
+<tr>
  <td>DistrictCooling</td>
+</tr>
+<tr>
  <td>DistrictHeating</td>
 </tr>
 </table>
@@ -6125,19 +6148,47 @@ Table 5. End Use Category Types
  </tr>
  <tr>
   <td>InteriorLights</td>
+</tr>
+<tr>
   <td>ExteriorLights</td>
+</tr>
+<tr>
   <td>InteriorEquipment</td>
+</tr>
+<tr>
   <td>ExteriorEquipment</td>
+</tr>
+<tr>
   <td>Fans</td>
+</tr>
+<tr>
   <td>Pumps</td>
+</tr>
+<tr>
   <td>Heating</td>
+</tr>
+<tr>
   <td>Cooling</td>
+</tr>
+<tr>
   <td>HeatRejection</td>
+</tr>
+<tr>
   <td>Humidifier</td>
+</tr>
+<tr>
   <td>HeatRecovery</td>
+</tr>
+<tr>
   <td>DHW</td>
+</tr>
+<tr>
   <td>Cogeneration</td>
+</tr>
+<tr>
   <td>Refrigeration</td>
+</tr>
+<tr>
   <td>Miscellaneous</td>
  </tr>
 </table>
@@ -6148,11 +6199,23 @@ Table 5. End Use Category Types
  </tr>
  <tr>
   <td>HeatingCoils</td>
+</tr>
+<tr>
   <td>CoolingCoils</td>
+</tr>
+<tr>
   <td>Chillers</td>
+</tr>
+<tr>
   <td>Boilers</td>
+</tr>
+<tr>
   <td>Baseboard</td>
+</tr>
+<tr>
   <td>HeatRecoveryForCooling</td>
+</tr>
+<tr>
   <td>HeatReoveryFor Heating</td>
  </tr>
 </table>
@@ -6215,7 +6278,7 @@ One can then report these values the same way one reports other standard meters.
 eplusout.shd
 ------------
 
-This file contains details of the shadow casting, back and receiving surfaces for the building. The [Engineering Reference](file:///E:\Docs4PDFs\EngineeringReference.pdf) explains the shadowing calculations in more detail; this report file merely shows the level of interactions that the calculations will use. The report shows the Solar Distribution algorithm (in the example Full Interior and Exterior) and then proceeds to illustrate which surfaces shade (possibly) which other surfaces.
+This file contains details of the shadow casting, back and receiving surfaces for the building. The Engineering Reference explains the shadowing calculations in more detail; this report file merely shows the level of interactions that the calculations will use. The report shows the Solar Distribution algorithm (in the example Full Interior and Exterior) and then proceeds to illustrate which surfaces shade (possibly) which other surfaces.
 
 Note, a casting surface -- a shadow casting surface or general casting surface (so called in the file) -- is one that casts a shadow on other surfaces. A receiving surface - a shadow receiving surface -- is one that receives shadows from other surfaces (i.e. casting surfaces). A back surface -- an inside surface -- is one that may be partially sunlit/receive solar transmission for interior solar distribution.
 

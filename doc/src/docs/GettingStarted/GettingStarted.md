@@ -290,7 +290,7 @@ Figure 6. EP-Launch with the Sets tab of View Results
 
 The figure above shows the same main screen of EP-Launch but with the “Sets” tab selected on the left edge of the View Results section. The buttons on this tab can open many files at the same time and are a shortcut to opening the files that may be commonly used. The Text Output Files, Drawing Files, and Spreadsheets buttons cause several different results files to open at once based on the currently selected Input File. The HTML file opens just the tabular results file if that file was produced (see *OutputContol:Table:Style*).
 
-The contents (along with examples) are discussed in the [Output Details](file:///E:\Docs4PDFs\OutputDetailsAndExamples.pdf) document.
+The contents (along with examples) are discussed in the [Output Details](../OutputDetailsAndExamples/OutputDetailsAndExamples.md) document.
 
 You can also view the results using one of the three buttons ("Text Output Files," "Drawing File" and "Spreadsheets") in the "View Results" area of the main EP-Launch screen.
 
@@ -368,7 +368,7 @@ Clicking on the "Spreadsheets" buttons will open any generated CSV files if an a
 
 ### Viewing the Drawing File without Running a Simulation
 
-The "Drawing" button (or the View menu Drawing File option) will automatically run EPDrawGUI if the DXF file does not exist or it is older than the input file. This allows the building geometry to be viewed without running a full simulation. For more information about EPDrawGUI, see the [*Auxiliary Programs*](file:///E:\Docs4PDFs\AuxiliaryPrograms.pdf) document.
+The "Drawing" button (or the View menu Drawing File option) will automatically run EPDrawGUI if the DXF file does not exist or it is older than the input file. This allows the building geometry to be viewed without running a full simulation. For more information about EPDrawGUI, see the [*Auxiliary Programs*](../AuxiliaryPrograms/AuxiliaryPrograms.md) document.
 
 ### Editing the Input Files
 
@@ -378,7 +378,7 @@ The input file, called IDF file that is selected from the top pull-down list, ca
 
 The File menu can be used for selecting input and weather files just like the "Browse…" buttons (see the *Selecting Input and Weather Files* section above).
 
-If you are upgrading from the previous version of EnergyPlus you can use the “File”, “Transition” menu option to upgrade your EnergyPlus input files (IDF and IMF) to the most recent version (see the [AuxiliaryPrograms](file:///E:\Docs4PDFs\AuxiliaryPrograms.pdf) document for more information about the Transition program). This EP-Launch option only works for upgrading input files one version.
+If you are upgrading from the previous version of EnergyPlus you can use the “File”, “Transition” menu option to upgrade your EnergyPlus input files (IDF and IMF) to the most recent version (see the [AuxiliaryPrograms](../AuxiliaryPrograms/AuxiliaryPrograms.md) document for more information about the Transition program). This EP-Launch option only works for upgrading input files one version.
 
 ### Edit Menu
 
@@ -442,7 +442,7 @@ EP-Launch will start a text editor when editing a IDF file or when viewing many 
 
 #### Drawing Viewer Options
 
-The default drawing viewer is the application associated with DXF files. This can be changed to your favorite drawing program by using the Select button then locating the executable file for your favorite drawing software capable of reading a DXF file. The Auto Find button will automatically find the program that is associated with the DXF file extension and use that program. A variety of programs (free of charge) can render DXF files for viewing.  The [Output Details](file:///E:\Docs4PDFs\OutputDetailsAndExamples.pdf) document lists some of these programs as well as displaying what a DXF rendered file looks like on the screen.
+The default drawing viewer is the application associated with DXF files. This can be changed to your favorite drawing program by using the Select button then locating the executable file for your favorite drawing software capable of reading a DXF file. The Auto Find button will automatically find the program that is associated with the DXF file extension and use that program. A variety of programs (free of charge) can render DXF files for viewing.  The [Output Details](../OutputDetailsAndExamples/OutputDetailsAndExamples.md) document lists some of these programs as well as displaying what a DXF rendered file looks like on the screen.
 
 #### VRML Viewer Options
 
@@ -557,7 +557,7 @@ The *EnergyPlus weather* file is an ascii file containing the hourly or sub-hour
 
 ### Primary Output Files
 
-The following output files are the most important for beginning users.  Then, there is the section on “other output” files.  And, more information about output files (complete list) is shown in the [Output Details and Examples](file:///E:\Docs4PDFs\OutputDetailsAndExamples.pdf) Document.
+The following output files are the most important for beginning users.  Then, there is the section on “other output” files.  And, more information about output files (complete list) is shown in the [Output Details and Examples](../OutputDetailsAndExamples/OutputDetailsAndExamples.md) Document.
 
 #### err
 
@@ -2663,14 +2663,14 @@ Several useful programs, not described fully here can be found in the Auxiliary 
 WeatherData
 -----------
 
-The E/E+ format is very flexible (as well as being ASCII and somewhat readable). In addition to the usual weather data (temperatures, solar radiation data), the format embodies other information from the location and weather data (e.g. design conditions, calculated ground temperatures, typical and extreme weather periods). The EPW (weather data format)  is described in [Auxiliary Programs](file:///E:\Docs4PDFs\AuxiliaryPrograms.pdf) Document. Other details including statistical reports, backgrounds on data sources and formats, use of the Weather Converter program (used both for processing data and reporting) are also provided in the Auxiliary Programs document.
+The E/E+ format is very flexible (as well as being ASCII and somewhat readable). In addition to the usual weather data (temperatures, solar radiation data), the format embodies other information from the location and weather data (e.g. design conditions, calculated ground temperatures, typical and extreme weather periods). The EPW (weather data format)  is described in [Auxiliary Programs](../AuxiliaryPrograms/AuxiliaryPrograms.md) Document. Other details including statistical reports, backgrounds on data sources and formats, use of the Weather Converter program (used both for processing data and reporting) are also provided in the Auxiliary Programs document.
 
 The web site for EnergyPlus (http://www.energyplus.gov) provides downloadable weather data for many sites throughout the world from several different formats. In addition, we are amenable to posting more weather data from users.
 
 Results Processing
 ------------------
 
-Results from EnergyPlus (using EP-Launch) appear in several possible formats.  The most basic are the csv files for the time oriented output and the meter output.  These will appear as &lt;filename&gt;.csv and &lt;filename&gt;Meter.csv.  These can be quite detailed files (ref: Output:Variable, Output:Meter commands).  Other formats (such as Tabular outputs) can yield more summarized results.  These files and contents are described in more detail in the “[Output Details and Examples](file:///E:\Docs4PDFs\OutputDetailsAndExamples.pdf)” document.
+Results from EnergyPlus (using EP-Launch) appear in several possible formats.  The most basic are the csv files for the time oriented output and the meter output.  These will appear as &lt;filename&gt;.csv and &lt;filename&gt;Meter.csv.  These can be quite detailed files (ref: Output:Variable, Output:Meter commands).  Other formats (such as Tabular outputs) can yield more summarized results.  These files and contents are described in more detail in the [Output Details and Examples](../OutputDetailsAndExamples/OutputDetailsAndExamples.md) document.
 
 As an example, here is what the normal “csv” file might look like in Excel™:
 
@@ -2843,7 +2843,7 @@ Likewise, a tabular output (usually in HTML format – which can be read by any 
 HVAC-Diagram
 ------------
 
-Another post processing program (EnergyPlus versions 1.2 and later) is the HVAC-Diagram application. It reads one of the EnergyPlus output files (eplusout.bnd and produces a Scalable Vector Graphics (SVG) file. More information on the HVAC Diagram program is found in the [Auxiliary Programs](file:///E:\Docs4PDFs\AuxiliaryPrograms.pdf) document.
+Another post processing program (EnergyPlus versions 1.2 and later) is the HVAC-Diagram application. It reads one of the EnergyPlus output files (eplusout.bnd and produces a Scalable Vector Graphics (SVG) file. More information on the HVAC Diagram program is found in the [Auxiliary Programs](../AuxiliaryPrograms/AuxiliaryPrograms.md) document.
 
 CSVProc
 -------
@@ -2867,7 +2867,7 @@ Library Files
 
 Library files for EnergyPlus are embodied in the DataSets and MacroDataSets folders. DataSets are IDF excerpts – you must cut and paste from them in order to use them. Items in MacroDataSets can be used in conjunction with the EPMacro preprocessor program. All files are in the necessary form for processing with EnergyPlus.
 
-The files in the DataSets and MacroDataSets folders are described in more detail in the “[Output Details and Examples](file:///E:\Docs4PDFs\OutputDetailsAndExamples.pdf)” document.
+The files in the DataSets and MacroDataSets folders are described in more detail in the [Output Details and Examples](../OutputDetailsAndExamples/OutputDetailsAndExamples.md) document.
 
 
 

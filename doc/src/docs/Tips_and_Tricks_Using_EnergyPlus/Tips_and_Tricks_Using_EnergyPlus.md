@@ -69,7 +69,7 @@ What EnergyPlus Is
 
 The primary website for EnergyPlus is http://www.energyplus.gov
 
-EnergyPlus is an energy analysis and thermal load simulation program. Based on a user’s description of a building from the perspective of the building’s physical make-up, associated mechanical systems, etc., EnergyPlus will calculate the heating and cooling loads necessary to maintain thermal control set points, conditions throughout a secondary HVAC system and coil loads, and the energy consumption of primary plant equipment as well as many other simulation details that are necessary to verify that the simulation is performing as the actual building would. More details on what EnergyPlus is can be found in the [GettingStarted Document](file:///E:\Docs4PDFs\GettingStarted.pdf).
+EnergyPlus is an energy analysis and thermal load simulation program. Based on a user’s description of a building from the perspective of the building’s physical make-up, associated mechanical systems, etc., EnergyPlus will calculate the heating and cooling loads necessary to maintain thermal control set points, conditions throughout a secondary HVAC system and coil loads, and the energy consumption of primary plant equipment as well as many other simulation details that are necessary to verify that the simulation is performing as the actual building would. More details on what EnergyPlus is can be found in the [GettingStarted Document](../GettingStarted/GettingStarted.md).
 
 No program is able to handle every simulation situation. However, it is the intent of EnergyPlus to handle as many building and HVAC design options either directly or indirectly through links to other programs in order to calculate thermal loads and/or energy consumption on for a design day or an extended period of time (up to, including, and beyond a year).
 
@@ -118,9 +118,9 @@ Datasets aka Libraries
 
 EnergyPlus uses the term DataSets for what many would call libraries. These files are included, for the most part, in the instalation package but may be available from other sites (such as the helpdesk or Yahoo Groups).
 
-There are two flavors of DataSets: **simple** and **Macro**. Some sets have files in both camps (for example, Solar Collectors). Both flavors contain IDF objects ready to be put into EnergyPlus input files. With the simple datasets, you may need to use a text editor or the IDF Editor to search the file for the one you want to use.  With the macro datsets and a simply structured imf (input macro file), you can name the item you want to include. (The macro program is described in the [Auxiliary Programs document](file:///E:\Docs4PDFs\AuxiliaryPrograms.pdf)).
+There are two flavors of DataSets: **simple** and **Macro**. Some sets have files in both camps (for example, Solar Collectors). Both flavors contain IDF objects ready to be put into EnergyPlus input files. With the simple datasets, you may need to use a text editor or the IDF Editor to search the file for the one you want to use.  With the macro datsets and a simply structured imf (input macro file), you can name the item you want to include. (The macro program is described in the [Auxiliary Programs document](../AuxiliaryPrograms/AuxiliaryPrograms.md)).
 
-Primary documentation for each dataset is found in the [Output Details and Examples document](file:///E:\Docs4PDFs\OutputDetailsAndExamples.pdf). Highlights of some datasets are given here.
+Primary documentation for each dataset is found in the [Output Details and Examples document](../OutputDetailsAndExamples/OutputDetailsAndExamples.md). Highlights of some datasets are given here.
 
 Locations-DesignDays
 --------------------
@@ -168,7 +168,7 @@ The Weather Converter program accesses this file when it processes (even for sta
 EPW Weather Files
 -----------------
 
-The WeatherConverter converts from other source formats to EPW and EnergyPlus CSV formats. The WeatherConverter also produces a statistics file that provides a quick synopsis of the converted data and is used by the tabular reports (ref: Climatic Data Summary report). For Ecotect users, the Weather Converter can also save as .wea format. We do not support conversion of EPWs to other formats, including to TMY2. The Weather Converter is described in detail in the [Auxiliary Programs document](file:///E:\Docs4PDFs\AuxiliaryPrograms.pdf).
+The WeatherConverter converts from other source formats to EPW and EnergyPlus CSV formats. The WeatherConverter also produces a statistics file that provides a quick synopsis of the converted data and is used by the tabular reports (ref: Climatic Data Summary report). For Ecotect users, the Weather Converter can also save as .wea format. We do not support conversion of EPWs to other formats, including to TMY2. The Weather Converter is described in detail in the [Auxiliary Programs document](../AuxiliaryPrograms/AuxiliaryPrograms.md).
 
 Meteonorm Weather Files
 -----------------------
@@ -1312,7 +1312,7 @@ Fan:OnOff is similar to the one above, but it cycles itself on and off as requir
 
 Fan:VariableVolume runs continuously during the Schedule period, but varies its volume to meet the heating or cooling demand.
 
-Consult the [Input Output Reference document](file:///E:\Docs4PDFs\InputOutputReference.pdf) (group Fans) for additional information.
+Consult the Input Output Reference document (group Fans) for additional information.
 
 Use of Set Point Managers
 -------------------------

@@ -177,9 +177,9 @@ All numbers can be flexibly input and are processed into single precision variab
 Input Details
 =============
 
-This document does not cover the input “classes” in detail.  For details on each class and examples of both input and output resulting from that class/object, please view the [Input Output Reference](file:///E:\Docs4PDFs\InputOutputReference.pdf) document.  In this document, we will show the “conventions” used in the IDD and provide limited examples for illustration purposes. Even the list of objects is dynamic, so we give you a method to see them from the IDFEditor.
+This document does not cover the input “classes” in detail.  For details on each class and examples of both input and output resulting from that class/object, please view the Input Output Reference document.  In this document, we will show the “conventions” used in the IDD and provide limited examples for illustration purposes. Even the list of objects is dynamic, so we give you a method to see them from the IDFEditor.
 
-An intelligent editor (IDFEditor) has been written and can be used as an illustration of how the comments in the IDD might be used by Interface Developers to guide their developments.  IDFEditor is described in the [Getting Started](file:///E:\Docs4PDFs\GettingStarted.pdf) document.
+An intelligent editor (IDFEditor) has been written and can be used as an illustration of how the comments in the IDD might be used by Interface Developers to guide their developments.  IDFEditor is described in the [Getting Started](../GettingStarted/GettingStarted.md) document.
 
 A full example of a very simple IDF is included in Appendix A to this document.
 
@@ -609,7 +609,7 @@ Some objects need all the parameters listed by the definition; some do not.  In
 
 ### Using the Input-Output Reference Document
 
-To assist you in using the [Input Output Reference](file:///E:\Docs4PDFs\InputOutputReference.pdf) document, it is grouped similarly to the IDD file.
+To assist you in using the Input Output Reference document, it is grouped similarly to the IDD file.
 
 To determine the latest set of groups and objects, it will be useful for you to open the IDFEditor (an intelligent editor that is installed with EnergyPlus) and write out the current object list.  The following figure shows the screen shot of the IDFEditor and the help menu to select the objectlist.  Select “**create objectlist.txt**” to create the object list – it will be put into the IDFEditor program folder.
 
@@ -988,7 +988,7 @@ The input data dictionary and input data file have been discussed in the previou
 
 For weather simulations, EnergyPlus accepts EnergyPlus weather files. Previous versions accepted BLAST formatted weather files and now a BLASTWeatherConverter program is provided.  The actual file name is **in.epw**.
 
-The Energy+.ini file is a “standard” Windows™ ini file and can be manipulated using the Windows API calls though EnergyPlus uses standard Fortran to manipulate it.  It is a very simple ini file and is fully described in the [Auxiliary Programs](file:///E:\Docs4PDFs\AuxiliaryPrograms.pdf) document. Energy+.ini and in.idf file should be in the directory from which you are running EnergyPlus.exe.
+The Energy+.ini file is a “standard” Windows™ ini file and can be manipulated using the Windows API calls though EnergyPlus uses standard Fortran to manipulate it.  It is a very simple ini file and is fully described in the [Auxiliary Programs](../AuxiliaryPrograms/AuxiliaryPrograms.md) document. Energy+.ini and in.idf file should be in the directory from which you are running EnergyPlus.exe.
 
 For the advanced user, there is also the “EPMacro” program, described in the Auxiliary Programs Document.  You run it as a separate program before EnergyPlus (the batch file included in the install and shown in the GettingStarted document contains the commands).
 

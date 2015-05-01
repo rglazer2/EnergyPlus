@@ -3770,7 +3770,7 @@ The Solar and Wind Energy Resource Assessment (SWERA) project, funded by the Uni
 
 Originally developed for use with Calener, a new program for building energy labelling in Spain, these weather files cover all 52 Spanish provincial capitals. Calener was developed by the Grupo de Termotecnia of the Escuela Superior de Ingeneiros in Seville for the Spanish Government. The weather files were synthetically generated using Climed (Portuguese software developed by Ricardo Aguiar) from mean monthly data coming from the Spanish Meteorological National Institute. These weather files were converted from the DOE-2 binary to EnergyPlus format and include constant wind speeds of 6.7 m/s.
 
-For more information on these weather files, contact: Profesor Luis Pérez-Lombard ([lpl@tmt.us.es](file:///E:\Docs4PDFs\lpl@tmt.us.es)) Escuela Superior de Ingenieros
+For more information on these weather files, contact: Profesor Luis Pérez-Lombard (lpl@tmt.us.es) Escuela Superior de Ingenieros
 
 ### Italian Climatic data collection "Gianni De Giorgio" (IGDG)
 
@@ -3832,9 +3832,7 @@ Liley, J Ben, Hisako Shiona, James Sturman, David S Wratt. 2007. Typical Meteoro
 
 ### Chartered Institution of Building Services Engineers (CIBSE)
 
-The CIBSE, in association with the (UK) Met Office has produced 'Test Reference Years' and 'Design Summer Years' for 14 UK locations for use with building energy simulation software. The data sets are available in various formats, including EnergyPlus/ESP-r. These data are NOT available on the EnergyPlus web site. For further details, see:
-
-[www.cibse.org/index.cfm?go=publications.view&PubID=332&S1=y&L1=0&L2=0](file:///E:\Docs4PDFs\www.cibse.org\index.cfm%3fgo=publications.view&PubID=332&S1=y&L1=0&L2=0)
+The CIBSE, in association with the (UK) Met Office has produced 'Test Reference Years' and 'Design Summer Years' for 14 UK locations for use with building energy simulation software. The data sets are available in various formats, including EnergyPlus/ESP-r. These data are NOT available on the EnergyPlus web site. For further details, see: www.cibse.org/index.cfm?go=publications.view&PubID=332&S1=y&L1=0&L2=0
 
 ### Meteonorm Data
 
@@ -10215,7 +10213,7 @@ Figure 38. Define Files to View
 
 When the "Define" button is pressed on the Sets tab of the View Results section of the main screen, the dialog box in the figure above is shown. This allows the files extensions to be selected that would be opened for each of the Set 1 to Set 8 buttons. One or many files can be selected for each of the Set buttons. This allows you to define exactly which files you want opened.
 
-The content of each file extension is listed below.  The contents (along with examples) are discussed in the [Output Details](file:///E:\Docs4PDFs\OutputDetailsAndExamples.pdf) document.
+The content of each file extension is listed below.  The contents (along with examples) are discussed in the [Output Details](../OutputDetailsAndExamples/OutputDetailsAndExamples.md) document.
 
 By pressing the "Text Output Files" button, a text editor will open each of the text output files. Up to 29 files will open, if they exist. Selecting "Single File" from the 'View'  menu displays a menu of all available output files from which any file can be opened individually. Each file may also be opened with an associated function key. The output files and function key shortcuts are listed below:
 
@@ -10363,7 +10361,7 @@ EP-Launch will start a text editor when editing a IDF file or when viewing many 
 
 #### Drawing Viewer Options
 
-The default drawing viewer is the application associated with DXF files. This can be changed to your favorite drawing program by using the Select button then locating the executable file for your favorite drawing software capable of reading a DXF file. The Auto Find button will automatically find the program that is associated with the DXF file extension and use that program. A variety of programs (free of charge) can render DXF files for viewing.  The [Output Details](file:///E:\Docs4PDFs\OutputDetailsAndExamples.pdf) document lists some of these programs as well as displaying what a DXF rendered file looks like on the screen.
+The default drawing viewer is the application associated with DXF files. This can be changed to your favorite drawing program by using the Select button then locating the executable file for your favorite drawing software capable of reading a DXF file. The Auto Find button will automatically find the program that is associated with the DXF file extension and use that program. A variety of programs (free of charge) can render DXF files for viewing.  The [Output Details](../OutputDetailsAndExamples/OutputDetailsAndExamples.md) document lists some of these programs as well as displaying what a DXF rendered file looks like on the screen.
 
 #### VRML Viewer Options
 
@@ -10561,7 +10559,7 @@ The *EnergyPlus weather* file is an ascii file containing the hourly or sub-hour
 
 ### Output Files
 
-More information (and more up-to-date) about output files is shown in the [Output Details and Examples](file:///E:\Docs4PDFs\OutputDetailsAndExamples.pdf) Document.
+More information (and more up-to-date) about output files is shown in the [Output Details and Examples](../OutputDetailsAndExamples/OutputDetailsAndExamples.md) Document.
 
 #### err
 
@@ -10670,7 +10668,7 @@ in the IDF.
 
 ### Postprocessing Program/Files
 
-A postprocessing program *ReadVarsESO.exe* is available that will read an ESO or MTR file and produce a file that can be read by Excel™. It can use an input file or not. In batch mode it is run by the little batch file *RunReadESO.bat*:  Further information on this program is provided in the [Input Output Reference](file:///E:\Docs4PDFs\InputOutputReference.pdf) under a section heading called "Using ReadVarsESO".
+A postprocessing program *ReadVarsESO.exe* is available that will read an ESO or MTR file and produce a file that can be read by Excel™. It can use an input file or not. In batch mode it is run by the little batch file *RunReadESO.bat*:  Further information on this program is provided in the Input Output Reference under a section heading called "Using ReadVarsESO".
 
 RunEPlus batch file
 -------------------
@@ -10845,7 +10843,7 @@ The *EnergyPlus weather* file is an ascii file containing the hourly or sub-hour
 
 ### Output Files
 
-More information (and more up-to-date) about output files is shown in the [Output Details and Examples](file:///E:\Docs4PDFs\OutputDetailsAndExamples.pdf) Document.
+More information (and more up-to-date) about output files is shown in the [Output Details and Examples](../OutputDetailsAndExamples/OutputDetailsAndExamples.md) Document.
 
 #### eplusout.err
 
@@ -10941,7 +10939,7 @@ in the IDF.
 
 ### Postprocessing Program/Files
 
-A postprocessing program *ReadVarsESO.exe* is available that will read an ESO or MTR file and produce a file that can be read by Excel™. It can use an input file or not. In batch mode it is run by the little batch file *RunReadESO.bat*:  Further information on this program is provided in the [Input Output Reference](file:///E:\Docs4PDFs\InputOutputReference.pdf) as well as the [Output Details and Examples](file:///E:\Docs4PDFs\OutputDetailsAndExamples.pdf) documents.
+A postprocessing program *ReadVarsESO.exe* is available that will read an ESO or MTR file and produce a file that can be read by Excel™. It can use an input file or not. In batch mode it is run by the little batch file *RunReadESO.bat*:  Further information on this program is provided in the Input Output Reference as well as the [Output Details and Examples](../OutputDetailsAndExamples/OutputDetailsAndExamples.md) documents.
 
 You can also used the CSVProc and convertESOMTR described earlier in this document as part of your post processing strategy.
 
